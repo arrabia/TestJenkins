@@ -4,18 +4,13 @@ pipeline {
     stage('Buzz Build') {
       steps {
         sh './jenkins/build.sh'
+        archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
     }
 
     stage('Buzz Test') {
       steps {
         sh './jenkins/test-all.sh'
-      }
-    }
-
-    stage('Archive Artefacts ') {
-      steps {
-        archiveArtifacts(artifacts: 'my-app.zip', caseSensitive: true)
       }
     }
 
