@@ -13,5 +13,11 @@ pipeline {
       }
     }
 
+    stage('Archive Artefacts ') {
+      steps {
+        archiveArtifacts(artifacts: 'my-app.zip', caseSensitive: true)
+      }
+    }
+
   }
 }
